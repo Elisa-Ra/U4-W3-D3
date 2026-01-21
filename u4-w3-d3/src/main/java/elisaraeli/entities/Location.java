@@ -4,45 +4,44 @@ import jakarta.persistence.*;
 
 
 @Entity
-@Table(name = "location")
-
+@Table(name = "locations")
 public class Location {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
     @Column(name = "nome", nullable = false, length = 50)
-    private String name;
+    private String nome;
 
-    @Column(name = "città", nullable = false)
-    private String city;
+    @Column(name = "città", nullable = false, length = 50)
+    private String citta;
 
     public Location() {
     }
 
-    public Location(String name, String city) {
-        this.name = name;
-        this.city = city;
+    public Location(String nome, String citta) {
+        this.nome = nome;
+        this.citta = citta;
     }
 
-    // GETTER E SETTER
     public long getId() {
         return id;
     }
 
-    public String getName() {
-        return name;
+    public String getNome() {
+        return nome;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setNome(String nome) {
+        this.nome = nome;
     }
 
-    public String getCity() {
-        return city;
+    public String getCitta() {
+        return citta;
     }
 
-    public void setCity(String city) {
-        this.city = city;
+    public void setCitta(String citta) {
+        this.citta = citta;
     }
 }

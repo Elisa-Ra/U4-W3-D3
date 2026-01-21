@@ -32,18 +32,23 @@ public class Evento {
     @Column(name = "numero_massimo_partecipanti", nullable = false)
     private int numeroMassimoPartecipanti;
 
+    @ManyToOne
+    @JoinColumn(name = "location_evento", nullable = false)
+    private Location location;
 
     public Evento() { // Il costruttore vuoto è OBBLIGATORIO per tutte le entities!
         // Viene usato da JPA per costruire degli oggetti quando leggeremo delle righe dalla tabella
     }
 
     public Evento(String titolo, LocalDate dataEvento, String descrizione,
-                  TipoEvento tipoEvento, int numeroMassimoPartecipanti) {
+                  TipoEvento tipoEvento, int numeroMassimoPartecipanti, Location location) {
         this.titolo = titolo;
         this.dataEvento = dataEvento;
         this.descrizione = descrizione;
         this.tipoEvento = tipoEvento;
         this.numeroMassimoPartecipanti = numeroMassimoPartecipanti;
+        this.location = location;
+
     }
 
     // GETTER E SETTER
@@ -89,6 +94,14 @@ public class Evento {
 
     public void setNumeroMassimoPartecipanti(int numeroMassimoPartecipanti) {
         this.numeroMassimoPartecipanti = numeroMassimoPartecipanti;
+    }
+
+    public Location getLocation() {
+        return location;
+    }
+
+    public void setLocation(Location location) {
+        this.location = location;
     }
 
 }

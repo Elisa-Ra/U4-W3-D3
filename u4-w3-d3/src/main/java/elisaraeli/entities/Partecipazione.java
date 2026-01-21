@@ -10,11 +10,13 @@ public class Partecipazione {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @Column(name = "persona", nullable = false)
-    private long persona;
+    @ManyToOne
+    @JoinColumn(name = "persona_id", nullable = false)
+    private Persona persona;
 
-    @Column(name = "evento", nullable = false)
-    private long evento;
+    @ManyToOne
+    @JoinColumn(name = "evento_id", nullable = false)
+    private Evento evento;
 
     @Column(name = "stato", nullable = false)
     @Enumerated(EnumType.STRING)
@@ -23,31 +25,32 @@ public class Partecipazione {
     public Partecipazione() {
     }
 
-    public Partecipazione(long persona, long evento, StatoPartecipazione statoPartecipazione) {
+    public Partecipazione(Persona persona, Evento evento, StatoPartecipazione statoPartecipazione) {
         this.persona = persona;
         this.evento = evento;
         this.statoPartecipazione = statoPartecipazione;
     }
 
+
     // GETTER E SETTER
-    
+
     public long getId() {
         return id;
     }
 
-    public long getPersona() {
+    public Persona getPersona() {
         return persona;
     }
 
-    public void setPersona(long persona) {
+    public void setPersona(Persona persona) {
         this.persona = persona;
     }
 
-    public long getEvento() {
+    public Evento getEvento() {
         return evento;
     }
 
-    public void setEvento(long evento) {
+    public void setEvento(Evento evento) {
         this.evento = evento;
     }
 
@@ -58,4 +61,5 @@ public class Partecipazione {
     public void setStatoPartecipazione(StatoPartecipazione statoPartecipazione) {
         this.statoPartecipazione = statoPartecipazione;
     }
+
 }
